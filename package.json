@@ -1,0 +1,43 @@
+{
+  "name": "project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "npx tsc",
+    "jasmine": "jasmine",
+    "start": "nodemon src/index.ts",
+    "test": "npm run build && npm run jasmine",
+    "lint": "eslint . --ext .ts",
+    "prettier": "prettier --config .prettierrc \"src/**/*.ts\" --write"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@eslint/js": "^9.7.0",
+    "@types/express": "^4.17.21",
+    "@types/jasmine": "^5.1.4",
+    "@types/node": "^20.14.9",
+    "@types/nodemon": "^1.19.6",
+    "@typescript-eslint/eslint-plugin": "^7.16.1",
+    "eslint": "^8.8.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^5.0.0",
+    "globals": "^15.8.0",
+    "nodemon": "^3.1.4",
+    "prettier": "^3.3.2",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.5.2",
+    "typescript-eslint": "^7.16.1"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "jasmine": "^5.1.0",
+    "jasmine-spec-reporter": "^7.0.0",
+    "sharp": "^0.33.4"
+  },
+  "optionalDependencies": {
+    "@img/sharp-win32-x64": "^0.33.4"
+  }
+}
