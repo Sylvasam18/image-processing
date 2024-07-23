@@ -6,12 +6,13 @@ const fs = require('fs');
 const routes = express.Router();
 
 routes.get('/', (req, res) => {
-  const newImage = (async function () {
-    try {
       const name = req.query.name as unknown as string;
       const height = req.query.height as unknown as string;
       const width = req.query.width as unknown as string;
 
+  const newImage = (async function () {
+    
+    try {
       await sharp('src/assets/full/fjord.jpg')
         .resize(parseInt(height), parseInt(width))
         .toFile(`src/assets/thumbs/${name}.png`);
@@ -20,7 +21,7 @@ routes.get('/', (req, res) => {
     }
   })();
   fs.readFile(
-    'src\\assets\\thumbs\\image.png',
+    `src\\assets\\thumbs\\${name}.png`,
     function (err: unknown, data: unknown) {
       res.writeHead(200, { 'Content-Type': 'image/png' });
       res.write(data);

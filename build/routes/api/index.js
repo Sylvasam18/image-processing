@@ -45,16 +45,16 @@ var http = require('http');
 var fs = require('fs');
 var routes = express_1.default.Router();
 routes.get('/', function (req, res) {
+    var name = req.query.name;
+    var height = req.query.height;
+    var width = req.query.width;
     var newImage = (function () {
         return __awaiter(this, void 0, void 0, function () {
-            var name, height, width, error_1;
+            var error_1;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         _a.trys.push([0, 2, , 3]);
-                        name = req.query.name;
-                        height = req.query.height;
-                        width = req.query.width;
                         return [4 /*yield*/, sharp('src/assets/full/fjord.jpg')
                                 .resize(parseInt(height), parseInt(width))
                                 .toFile("src/assets/thumbs/".concat(name, ".png"))];
@@ -70,7 +70,7 @@ routes.get('/', function (req, res) {
             });
         });
     })();
-    fs.readFile('src\\assets\\thumbs\\image.png', function (err, data) {
+    fs.readFile("src\\assets\\thumbs\\".concat(name, ".png"), function (err, data) {
         res.writeHead(200, { 'Content-Type': 'image/png' });
         res.write(data);
         return res.end();
