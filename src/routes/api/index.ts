@@ -1,4 +1,5 @@
 import express from 'express';
+import newImage from '../../resizer';
 const sharp = require('sharp');
 const http = require('http');
 const fs = require('fs');
@@ -6,20 +7,10 @@ const fs = require('fs');
 const routes = express.Router();
 
 routes.get('/', (req, res) => {
-      const name = req.query.name as unknown as string;
-      const height = req.query.height as unknown as string;
-      const width = req.query.width as unknown as string;
-
-  const newImage = (async function () {
-    
-    try {
-      await sharp('src/assets/full/fjord.jpg')
-        .resize(parseInt(height), parseInt(width))
-        .toFile(`src/assets/thumbs/${name}.png`);
-    } catch (error) {
-      console.log(error);
-    }
-  })();
+  const name = req.query.name as unknown as string;
+  const height = parseInt(req.query.height as unknown as string);
+  const width = parseInt(req.query.width as unknown as string);
+  newImage(name, width, height);
   fs.readFile(
     `src\\assets\\thumbs\\${name}.png`,
     function (err: unknown, data: unknown) {
